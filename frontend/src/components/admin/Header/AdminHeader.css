@@ -1,0 +1,34 @@
+.adminHeader{
+    /* width: auto; */
+    min-height: 70px;
+    border-bottom: 1px solid black;
+    background-color: #4C4CAD;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+   
+}
+
+.adminSearchbar{
+max-width: 200px;
+
+
+}
+
+.top{
+    margin-left: 20px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+.logo{
+    font-size: 20px;
+    font-weight: 900;
+    color: white;
+  
+}

@@ -1,0 +1,10 @@
+
+
+.cont{
+    margin: auto !important;
+}
+
+.img_pro{
+    height: 15rem;
+    object-fit: cover;
+}

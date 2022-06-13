@@ -1,0 +1,12 @@
+.singleHeader{
+    width: 100%;
+    height: 15rem;
+    background-image: linear-gradient(to right top, #106cf5, #8e3591, #782141, #45211a, #171615);
+    /* background-image: linear-gradient(to right top, #10f559, #00dab9, #00b7ff, #0088ff, #0f32f8); */
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    color: azure;
+
+}

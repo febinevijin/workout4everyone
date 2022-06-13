@@ -1,0 +1,75 @@
+.proSideCard{
+    height: 30rem;
+    width: 20rem;
+    background-color: rgba(255, 255, 255, 0.397);
+    /* border: 1px solid gray; */
+    position: relative;
+    bottom: 10rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   
+}
+
+.imgCont{
+    width: 100%;
+    height:15rem;
+
+    background-image: linear-gradient(to right top, #2510f5, #004bd7, #003f82, #002b34, #041610);
+}
+.singleImg{
+    width: 100%;
+    height: 100%;
+   
+    object-fit: fill;
+}
+.workoutDetail{
+text-align: center;
+}
+
+
+
+
+
+.button-28 {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #3B3B3B;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 60%;
+  will-change: transform;
+}
+
+.button-28:disabled {
+  pointer-events: none;
+}
+
+.button-28:hover {
+  color: #fff;
+  background-image: linear-gradient(to right top, #106cf5, #8e3591, #782141, #45211a, #171615);
+  /* background-color: #1A1A1A; */
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button-28:active {
+  box-shadow: none;
+  transform: translateY(0);
+}

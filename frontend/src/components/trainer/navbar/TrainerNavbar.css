@@ -1,0 +1,27 @@
+.navbarList{
+   
+    /* background-color: aqua; */
+    min-height: 3rem;
+    box-shadow: 1px 8px 21px 7px rgba(102,206,234,0.65);
+-webkit-box-shadow: 1px 8px 21px 7px rgba(102,206,234,0.65);
+-moz-box-shadow: 1px 8px 21px 7px rgba(102,206,234,0.65);
+}
+.listmenu{
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    font-size: 20px;
+    font-weight: 700;
+    
+}
+.OnClick{
+    background:    #00ffff;
+background:    linear-gradient(#00ffff, #9900ff);
+border-radius: 1000px;
+box-shadow:    0 3px #9900ff;
+padding:       20px 45px;
+color:         #ffffff;
+display:       inline-block;
+font:          normal bold 20px/1 "Open Sans", sans-serif;
+text-align:    center;
+}

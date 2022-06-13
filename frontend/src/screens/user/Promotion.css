@@ -1,0 +1,19 @@
+.main-container{
+    
+    width: 100%;
+    height: 200px;
+    background-color: #faffde;
+    /* display: block; */
+    /* justify-content: center; */
+  
+   
+    
+}
+.text-1{
+    align-items: center;
+}
+
+.gym-icons{
+    display: flex;
+}
+

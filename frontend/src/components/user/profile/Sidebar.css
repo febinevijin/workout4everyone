@@ -1,0 +1,58 @@
+.sidebar-cont{
+
+}
+
+.mm{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit:cover;
+}
+
+
+.sub-content{
+    cursor: pointer;
+    
+
+}
+
+.sidebar-content ul {
+	list-style-type: none;
+	
+}
+
+.sidebar-content ul li {
+	font-size: 30px;
+	/* font-family: sans-serif; */
+	background-color: white;
+	border: 2px solid black;
+	letter-spacing: 0.1em;
+	width: 6em;
+	height: 1.5em;
+	line-height: 1.5em;
+	position: relative;
+	overflow: hidden;
+	/* margin: 0.4em; */
+	cursor: pointer;
+}
+
+.sidebar-content ul li span {
+	color: white;
+	mix-blend-mode: difference;
+}
+
+.sidebar-content ul li::before {
+	content: '';
+	position: absolute;
+	width: 1.5em;
+	height: inherit;
+	background-color: black;
+	border-radius: 50%;
+	top: 0;
+	left: -0.75em;
+	transition: 0.5s ease-out;
+}
+
+.sidebar-content ul li:hover::before {
+	transform: scale(7);
+}
