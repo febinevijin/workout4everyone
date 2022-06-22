@@ -21,6 +21,7 @@ const userSchema = mongoose.Schema({
         required:true,
         default:false
     },
+    myWorkout:[{type:String}]
 })
 
 userSchema.methods.matchPassword = async function( enteredPassword ){

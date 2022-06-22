@@ -88,10 +88,10 @@ const loginUser = asyncHandler(async (req, res) => {
 // ===================================Profile==================
 
 const getUserProfile = asyncHandler(async (req, res) => {
-  console.log(req.user, "111111111111111111111111111");
+  // console.log(req.user, "111111111111111111111111111");
   const user = await User.findById(req.user._id);
 
-  console.log(user, "WEIOGHJKL");
+  // console.log(user, "WEIOGHJKL");
   try {
     res.json({
       _id: user._id,
@@ -148,6 +148,75 @@ export const getSingleWorkout = async(req,res) =>{
     res.json("no workout")
   }
 }
+// ======================================================================================
+
+// ==============================================Check workout ====================================
+    export const getCheckOutWorkout = async (req,res) =>{
+      let userId = req.user._id
+      let productId = req.params.id
+      console.log(userId,' ',productId);
+      try {
+        const user = await User.findById(userId)
+        if(user.myWorkout.includes(productId))
+        {
+          res.json({status:false})
+        }
+        else{
+          res.json({status:true})
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+// ====================================================================================================
+
+
+// =================================================get My workout in cart =================================
+
+  export const getMyWorkout = async (req,res) =>{
+    let myWorkout  = req.user.myWorkout
+//  console.log(myWorkout);
+
+ try {
+ 
+  const data = await Promise.all(myWorkout.map(
+    item => trainerWorkout.findById(item)
+))
+
+// console.log(data);
+if(data){
+
+  res.status(200).json(data)
+}else{
+  res.json({
+    msg:'no active workout'
+  })
+}
+  
+ } catch (error) {
+  console.log(error)
+ }
+  }
+
+// =======================================================================================================
+
+
+// =============================videoPlayer=====================
+
+export const getVideoPlayer = async (req,res) =>{
+  const programId = req.params.id
+  try {
+    const singleProgram = await trainerWorkout.findById(programId)
+    console.log(singleProgram,'ppppppppppppppppppppppp');
+    res.status(200).json(singleProgram)
+    
+  } catch (error) {
+    res.json("no workout")
+  }
+ }
+
+// ==============================================================
 
 
 

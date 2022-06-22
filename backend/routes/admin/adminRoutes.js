@@ -16,6 +16,7 @@ import {
   getApplication,
   approveTrainer,
   denyTrainer,
+  orderDetails,
 
 } from "../../controllers/admin/adminControler.js";
 
@@ -42,6 +43,7 @@ router.route('/videoCount').get(getVideoCount)
 router.route('/getApplication').get(getApplication)
 router.route('/approveTrainer/:id').put(approveTrainer)
 router.route('/denyTrainer/:id').delete(denyTrainer)
+router.route('/orderDetails').get(orderDetails)
 
 
 export default router;

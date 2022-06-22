@@ -23,7 +23,10 @@ const authenticatedTrainer = CatchAsyncError(async (req, res, next) => {
 })
 
 const authenticatedUser = CatchAsyncError(async (req, res, next) => {
+
     let {userToken} = req.cookies
+    
+        // console.log(req.cookies,"-----------");
    
    
     if (!userToken) {

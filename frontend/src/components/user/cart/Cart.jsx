@@ -1,53 +1,65 @@
-import React from 'react'
-import { Col, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import './Cart.css'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "./Cart.css";
 const Cart = () => {
+    const [myWorkout, setMyWorkout] = useState('')
+  let getWorkout = async () => {
+    const config = {
+      withCredentials: true,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+      },
+    };
+    const response = await axios.get(
+      "http://localhost:5000/api/users/getMyWorkout",
+      config
+    );
+   let  Workout=response.data
+    console.log(Workout);
+    setMyWorkout(Workout)
+  };
+
+  useEffect(() => {
+    getWorkout();
+  }, []);
+
   return (
-    <div className='container-fluid'>
-        <Row className='workContainer my-3'>
-            <Col className='workCol' >
-            <div className='preview-container'>
-                <img className='workImg' src="https://i.ytimg.com/vi/6VFLKdfxA24/maxresdefault.jpg" alt="" />
-            </div>
+    <div className="container-fluid">
+        {myWorkout && myWorkout.map ((data) => (
 
-            <div className="programDetails">
-                    <p>workout namr</p>
-                    <p>6 week challenge</p>
-                    <p>bt trainer</p>
-            </div>
+<Row className="workContainer my-3" key={data._id}>
+<Col className="workCol">
+  <div className="preview-container">
+    <img
+      className="workImg"
+      src={data.previewUrl}
+      alt=""
+    />
+  </div>
 
-            <div className="viewButton">
-            <button class="button28" role="button"><Link  to= "/videoPlayer">Start Program</Link></button>
-            </div>
+  <div className="programDetails">
+    <p>{data.name}</p>
+    <p>{data.week} week challenge</p>
+    <p>bt trainer</p>
+  </div>
 
-            </Col>
-        </Row>
+  <div className="viewButton">
+    <button class="button28" role="button">
+      <Link to={`/videoPlayer/${data._id}`}>Start Program</Link>
+    </button>
+  </div>
+</Col>
+</Row>
 
-        <Row className='workContainer my-3'>
-            <Col className='workCol' >
-            <div className='preview-container'>
-                <img className='workImg' src="https://i.ytimg.com/vi/6VFLKdfxA24/maxresdefault.jpg" alt="" />
-            </div>
+        ))}
+     
 
-            <div className="programDetails">
-                    <p>workout namr</p>
-                    <p>6 week challenge</p>
-                    <p>bt trainer</p>
-            </div>
-
-            <div className="viewButton">
-            <button class="button28" role="button">Start Program</button>
-            </div>
-
-            </Col>
-        </Row>
-
-        
-
-        
+     
     </div>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;

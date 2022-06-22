@@ -19,7 +19,10 @@ const trainerWorkoutSchema = new mongoose.Schema({
 },
   trainerId: {type:mongoose.Schema.ObjectId,},
 
-
+  trainerName:{
+    type: String,
+required:true
+},
   previewUrl:{
     type:String,
     // required:true,
@@ -37,7 +40,8 @@ const trainerWorkoutSchema = new mongoose.Schema({
   videoUrl:{
     type:String,
     required:true,
-  }
+  },
+  user:[{type:String}]
  
 });
 const trainerWorkout =  mongoose.model("trainerWorkout", trainerWorkoutSchema);

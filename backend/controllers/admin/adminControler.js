@@ -5,6 +5,7 @@ import User from "../../models/user/userModel.js";
 import adminWorkout from '../../models/admin/adminWorkoutModel.js'
 import generateToken from '../../util/gnerateToken.js'
 import trainerWorkout from '../../models/trainer/trainerWorkoutModel.js';
+import adminWallet from '../../models/admin/adminWallet.js';
 import { application } from 'express';
 
 
@@ -315,5 +316,29 @@ console.log(trainer);
 }
 
 // ===================================================================================
+
+// ==========================================get oder details in addmin===================
+
+export const orderDetails = async (req,res) =>{
+try {
+    let details = await adminWallet.find({})
+    console.log(details.paymentStatus);
+    if (details){
+        // console.log(details);
+        res.status(200).json(details)
+
+    }
+    else{
+        res.json({
+            msg:"No Items"
+        })
+    }
+} catch (error) {
+    console.log(error);
+    
+}
+}
+
+// ====================================================================================
 
 export {registerAdmin,loginAdmin,acceptTrainer,getAllUser,getAllTrainer,letBlockUser,letBlockTrainer,adminPostWorkout,getWorkout}

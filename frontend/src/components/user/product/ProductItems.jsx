@@ -43,7 +43,7 @@ useEffect(() => {
         <Col lg={4} className="me-auto">
           
         <Card>
-  <Card.Img variant="top" src="images\cardimg.jpg" className='img_pro'/>
+  <Card.Img variant="top" src={data?.previewUrl} className='img_pro'/>
   <Card.Body>
 
     <Card.Title>{data.workout}</Card.Title>

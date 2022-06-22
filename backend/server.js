@@ -13,8 +13,10 @@ import bodyParser from "body-parser";
 import adminRoutes from './routes/admin/adminRoutes.js'
 import userRoutes from './routes/user/userRoutes.js'
 import trainerRoutes from './routes/trainer/trainerRoutes.js'
+import orderRoutes from './routes/order/orderRoutes.js'
 import productRoutes from './routes/admin/productRoutes.js'
 import { authenticatedUser } from "./middleware/authTrainer.js";
+import testRoutes from './routes/test/testRoutes.js'
 
 
 
@@ -77,6 +79,16 @@ app.use('/api/admin',adminRoutes)
 app.use('/api/trainer',trainerRoutes) 
 // =======================================
 
+// ====================ORDERS=================
+
+app.use ('/api/order',orderRoutes)
+
+// ================================================
+
+
+// =======================TEST PURPOSE=================
+app.use ('/api/test', testRoutes)
+// =========================================================
 
 app.get('/api/config/paypal',(req,res)=>{
 
@@ -95,6 +107,9 @@ app.get('/api/config/paypal',(req,res)=>{
   }
 
 }) 
+
+
+
 
 
 dotenv.config();

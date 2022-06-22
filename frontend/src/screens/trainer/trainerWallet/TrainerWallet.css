@@ -1,0 +1,28 @@
+.walletCont{
+	justify-content: center;
+}
+.walletIcon{
+	font-size: 5em !important;
+}
+.txn-list {
+	width: 400px;
+	border: 1px solid gray;
+	background-color: rgb(247, 247, 247);
+	padding: 12px 10px; 
+	color: rgb(20, 19, 19);
+	font-size: 20px;
+	/* margin: 7px 0; */
+}
+
+.credit-amount {
+	color: green;
+	float: right;
+
+}
+
+.history{
+	text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}

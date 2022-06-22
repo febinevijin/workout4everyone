@@ -10,24 +10,29 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const OneProduct = () => {
-  const params = useParams()
-  const [singlePro,setSinglePro] = useState()
+  const params = useParams();
+  const [singlePro, setSinglePro] = useState();
 
-  const singleWorkout = async ()=>{
-    const {data} = await axios.get(`http://localhost:5000/api/users/getSingleWorkout/${params.id}`)
-   console.log(data);
-    setSinglePro(data)
-  }
+  const singleWorkout = async () => {
+    const config = {
+      withCredentials: true,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        "Content-type": "application/json",
+      },
+    };
+    const { data } = await axios.get(
+      `http://localhost:5000/api/users/getSingleWorkout/${params.id}`, config
+    );
+    console.log(data);
+    setSinglePro(data);
+  };
 
   useEffect(() => {
-  try {
-    singleWorkout()
-  } catch (error) {
-    
-  }
-  }, [])
-  
-
+    try {
+      singleWorkout();
+    } catch (error) {}
+  }, []);
 
   return (
     <>
@@ -36,11 +41,11 @@ const OneProduct = () => {
 
       <div className="proDetail d-flex">
         <div className="proLeftCard container-fluid">
-          <SingleProSideCard singlePro = {singlePro}/>
+          <SingleProSideCard singlePro={singlePro} />
         </div>
 
         <div className="proRight mt-1">
-          <SingleProRightSide singlePro = {singlePro} />
+          <SingleProRightSide singlePro={singlePro} />
         </div>
       </div>
     </>

@@ -24,7 +24,7 @@ console.log(value);
        {value === 3 ? <Link to="/trainerHomepage" className='OnClick'  > Profile</Link> :  <Link to="/trainerProfile"  onClick={()=> setValue(3)} > Profile</Link>}
        </li>
        <li>
-       {value === 4 ? <Link to="/trainerHomepage"  className='OnClick' > Client</Link> :  <Link to="/trainerHomepage"  onClick={()=> setValue(4)} > Client</Link>}
+       {value === 4 ? <Link to="/trainerWallet"  className='OnClick' > Wallet</Link> :  <Link to="/trainerWallet"  onClick={()=> setValue(4)} > Wallet</Link>}
        </li>
        <li>
        {value === 5 ? <Link to="/trainerHomepage"  className='OnClick' > Chat</Link> :  <Link to="/trainerHomepage"  onClick={()=> setValue(5)} > Chat</Link>}
