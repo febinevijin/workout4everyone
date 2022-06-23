@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import TraainerHeader from '../../../components/trainer/header/TrainerHeader'
 import TrainerNavbar from '../../../components/trainer/navbar/TrainerNavbar'
 import './TrainerWallet.css'
@@ -7,6 +7,7 @@ import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import axios from 'axios';
 
 const TrainerWallet = () => {
+  const [orderDetails, setOrderDetails] = useState('')
 
     let Order = async () => {
 
@@ -19,7 +20,7 @@ const TrainerWallet = () => {
           };
 
         const {data} = await axios.get("http://localhost:5000/api/trainer/OrderDetails",config)
-        console.log(data);
+        setOrderDetails(data)
     }
 
     useEffect(() => {
@@ -40,12 +41,19 @@ const TrainerWallet = () => {
         <AccountBalanceWalletIcon className="walletIcon"/>
         <Card.Title>Total Balance</Card.Title>
         <Card.Text>
-         1200
+        { orderDetails && orderDetails.reduce((accu,amount) =>  accu + amount.trainerPrice ,0) 
+        }
+       
         </Card.Text>
 
+          {
+            orderDetails && orderDetails.map ((data) => (
+
         <Card.Text className='history'>
-        <p class="txn-list">Payment to xyz shop<span class="credit-amount">$100</span></p>
+        <p class="txn-list">{data.workoutName}<span class="credit-amount">${data.trainerPrice}</span></p>
         </Card.Text>
+            ))
+          }
 
         <Button variant="primary">Go somewhere</Button>
       </Card.Body>
