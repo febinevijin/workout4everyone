@@ -48,10 +48,13 @@ useEffect(() => {
 
     <Card.Title>{data.workout}</Card.Title>
     <Card.Text>
-     { data.week}
+     { data.workoutName} 
     </Card.Text>
     <Card.Text>
-     { data.price}
+     { data.week} program
+    </Card.Text>
+    <Card.Text>
+     Rs{ data.price}
     </Card.Text>
     <Button variant="primary">
       <Link to={`/Oneproduct/${data._id}`}>

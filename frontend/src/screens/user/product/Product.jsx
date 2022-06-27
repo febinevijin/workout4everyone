@@ -26,7 +26,7 @@ const Product = () => {
 <>
 <Header/>
 
-{/* <ProHeader/> */}
+
     <ProductItems />
 
         <Footer/>

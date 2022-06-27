@@ -37,15 +37,15 @@ const TrainerHomePage = () => {
   <h2>Uploaded video <small>.</small></h2>
   <ul className="responsive-table">
     <li className="table-header">
-      <div className="col col-1">Job Id</div>
+      <div className="col col-1">No:</div>
       <div className="col col-2">program Name</div>
       <div className="col col-3">Amount </div>
-      <div className="col col-4">No: of users</div>
+      <div className="col col-4">uploaded date</div>
     </li>
-    {trainerDeatails && trainerDeatails.map((data) => (
+    {trainerDeatails && trainerDeatails.map((data,index) => (
 
     <li className="table-row">
-      <div className="col col-1" data-label="Job Id">42235</div>
+      <div className="col col-1" data-label="Job Id">{index+1}</div>
       <div className="col col-2" data-label="Customer Name">{data.workoutName}</div>
       <div className="col col-3" data-label="Amount">{data.trainerPrice}</div>
       <div className="col col-4" data-label="Payment Status">{data.createdAt.split("T")[0].split('-').reverse().join('/')}</div>
