@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
       }; 
 
       const { data } = await axios.post(
-        "https://workout4everyone.ml/api/users/loginUser",
+        "http://localhost:5000/api/users/loginUser",
         { email, password },
         config
       );
