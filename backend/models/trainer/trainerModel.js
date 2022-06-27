@@ -34,6 +34,10 @@ const trainerSchema = mongoose.Schema({
         type:String,
         required:true,
     },
+    trainerProfileId:{
+        type:String,
+        required:true,
+    },
 })
 
 trainerSchema.methods.matchPassword = async function( enteredPassword ){

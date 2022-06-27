@@ -1,9 +1,33 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import TraainerHeader from '../../../components/trainer/header/TrainerHeader'
 import TrainerNavbar from '../../../components/trainer/navbar/TrainerNavbar'
 import './TrainerHomePage.scss'
 
 const TrainerHomePage = () => {
+
+  const [trainerDeatails, setTrainerDeatails] = useState('')
+
+  
+  let details = async () => {
+
+    const config = {
+        withCredentials: true,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          "Content-type": "application/json",
+        },
+      };
+
+    const {data} = await axios.get("http://localhost:5000/api/trainer/trainerDashboard",config)
+    setTrainerDeatails(data)
+    console.log(data);
+}
+
+
+  useEffect(() => {
+    details()
+}, [])
   return (
     <div>
         <TraainerHeader/>
@@ -18,12 +42,15 @@ const TrainerHomePage = () => {
       <div className="col col-3">Amount </div>
       <div className="col col-4">No: of users</div>
     </li>
+    {trainerDeatails && trainerDeatails.map((data) => (
+
     <li className="table-row">
       <div className="col col-1" data-label="Job Id">42235</div>
-      <div className="col col-2" data-label="Customer Name">John Doe</div>
-      <div className="col col-3" data-label="Amount">$350</div>
-      <div className="col col-4" data-label="Payment Status">Pending</div>
+      <div className="col col-2" data-label="Customer Name">{data.workoutName}</div>
+      <div className="col col-3" data-label="Amount">{data.trainerPrice}</div>
+      <div className="col col-4" data-label="Payment Status">{data.createdAt.split("T")[0].split('-').reverse().join('/')}</div>
     </li>
+    ))}
   
   </ul>
 </div>

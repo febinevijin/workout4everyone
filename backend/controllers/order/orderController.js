@@ -35,6 +35,15 @@ export const placeOrder = async (req,res)=>{
                         userId:req.user.id,
                     })
 
+                    await trainerWorkout.findOneAndUpdate(
+                        { _id: req.body.productId },
+                        { $push: { user: req.user.id } }
+                        
+                    )
+
+
+                   
+
 
             await Order.create({
                 productId:req.body.productId,
@@ -66,18 +75,29 @@ export const placeOrder = async (req,res)=>{
 
 export const distributeMoney = async (req,res) =>{
 const {orderId , trainerPrice} = req.body
-console.log(orderId , trainerPrice);
+// console.log(orderId , trainerPrice);
 try {
 
-    const amount = await trainerWallet.create({
-        trainerPrice
-    })
+ 
   
     const adminOrder = await adminWallet.findById(orderId)
+
+    // console.log(adminOrder);
 
     if (adminOrder.paymentStatus == false) {
         await adminWallet.findByIdAndUpdate(orderId,{paymentStatus:true},{new: true})
     }
+
+    await trainerWallet.create({
+       workoutName:adminOrder.workoutName,
+       price:adminOrder.price,
+       trainerPrice:adminOrder.trainerPrice,
+       trainerId:adminOrder.trainerId,
+       trainerName:adminOrder.trainerName,
+       userId:adminOrder.userId
+    })
+
+
 
 res.json({status:true})
     

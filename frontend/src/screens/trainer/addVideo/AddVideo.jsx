@@ -86,12 +86,12 @@ const AddVideo = () => {
 
       const { data } = await axios.post(
         "http://localhost:5000/api/trainer/postTrainerWorkout",
-        {workout, price,week, description,image,video},
+        { workout, price, week, description, image, video },
         config
       );
       if (data) {
         alert(data);
-        navigate('/trainerHomePage')
+        navigate("/trainerHomePage");
       }
     } catch (err) {
       console.log(err.message);
@@ -99,172 +99,99 @@ const AddVideo = () => {
   };
 
   return (
-    <div>
+    <>
       <TraainerHeader />
       <TrainerNavbar />
+      <Container fluid>
+        <Row>
+          <Col className="mx-auto my-2  shadow rounded  p-5" lg={6}>
+            <Form className=" w-100" onSubmit={submitWorkout}>
+              <Form.Group className="mb-3 ">
+                <Form.Label>Program Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="enter workout name"
+                  value={workout}
+                  onChange={(e) => setWorkout(e.target.value)}
+                />
+              </Form.Group>
 
-      <div className="container-fluid addContainer mt-5 p-5">
-
-        <div className="addVideoContainer">
-          <div className="newVideo my-5">
-            <p>Stage 1</p>
-          </div>
-          {/* <form onSubmit={submitWorkout}>
-            <div className="workout mt-3">
-              <p>Wokout name</p>
-              <input
-                type="text"
-                placeholder="enter workout name"
-                value={workout}
-                onChange={(e) => setWorkout(e.target.value)}
-              />
-            </div>
-
-            <div className="workoutPrice mt-3 ">
-              <p>Price</p>
-              <input
-                type="text"
-                placeholder="price"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-              />
-            </div>
-
-            <div className="workoutDesc  mt-3">
-              <p>Decription</p>
-              <input
-                type="text"
-                placeholder="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </div>
-
-            <div className="workoutThumbnail mt-5">
-              <p>+</p>
-              <p>upload thumbnail</p>
-              <input
-                type="file"
-                name="image"
-                value={fileInputState}
-                onChange={handleFileInputChange}
-              />
-            </div>
-
-            {previewSource && (
-              <img
-                src={previewSource}
-                alt="choosen"
-                style={{ height: "100px", width: "100px" }}
-              />
-            )}
-
-            <div className="workoutVideo  my-5">
-              
-              <input
-                type="file"
-                name="video"
-                
-                onChange={handleVideo}
-              />
-            </div>
-            <div>
-              <button type="submit">Submit</button>
-            </div>
-          </form> */}
-
-
-
-          <Form onSubmit={submitWorkout} >
-  <Form.Group className="mb-3 col-lg-6" >
-    <Form.Label>Program Name</Form.Label>
-    <Form.Control type="text"
-                placeholder="enter workout name"
-                value={workout}
-                onChange={(e) => setWorkout(e.target.value)} />
-   
-  </Form.Group>
-
-  {/* <Form.Group className="mb-3 col-lg-6" >
+              {/* <Form.Group className="mb-3 col-lg-6" >
     <Form.Label>Program duration</Form.Label>
     <Form.Control type="password" placeholder="Enter program duration" />
     
   </Form.Group> */}
 
-  <Form.Group className="mb-3 col-lg-6" >
-    <Form.Label>Price</Form.Label>
-    <Form.Control type="text"
-                placeholder="price"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)} />
-    
-  </Form.Group>
+              <Form.Group className="mb-3 ">
+                <Form.Label>Price</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="price"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                />
+              </Form.Group>
 
-  <Form.Group className="mb-3 col-lg-6" >
-    <Form.Label>Weeks</Form.Label>
-    <Form.Control type="text"
-                placeholder="Enter the duration of program"
-                value={week}
-                onChange={(e) => setWeek(e.target.value)} />
-    
-  </Form.Group>
+              <Form.Group className="mb-3 ">
+                <Form.Label>Weeks</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter the duration of program"
+                  value={week}
+                  onChange={(e) => setWeek(e.target.value)}
+                />
+              </Form.Group>
 
-  <Form.Group className="mb-3 col-lg-6" controlId="exampleForm.ControlTextarea1">
-    <Form.Label>Description</Form.Label>
-    <Form.Control as="textarea" rows={3} 
-    type="text"
-    placeholder="description"
-    value={description}
-    onChange={(e) => setDescription(e.target.value)}/>
-  </Form.Group>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlTextarea1"
+              >
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  type="text"
+                  placeholder="description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </Form.Group>
 
-  <Form.Group controlId="formFile" className="mb-3 col-lg-6">
-    <Form.Label>Default file input example</Form.Label>
-    <Form.Control type="file"
-                name="image"
-                value={fileInputState}
-                onChange={handleFileInputChange} />
-  </Form.Group>
+              <Form.Group controlId="formFile" className="mb-3">
+                <Form.Label>Default file input example</Form.Label>
+                <Form.Control
+                  type="file"
+                  name="image"
+                  value={fileInputState}
+                  onChange={handleFileInputChange}
+                />
+              </Form.Group>
 
-  {previewSource && (
-              <img
-                src={previewSource}
-                alt="choosen"
-                style={{ height: "100px", width: "100px" }}
-              />
-            )}
-<div className="my-3">
-
-<Form.Group controlId="formFile" className="mb-3 col-lg-6">
-    <Form.Label>Default file input example</Form.Label>
-    <Form.Control 
-                type="file"
-                name="video"
-                
-                onChange={handleVideo} />
-  </Form.Group>
-  <Button  variant="primary" type="submit ">
-    Submit
-  </Button>
-  </div>
-</Form>
-
-
-
-        </div>
-
-
-     
-
-
-
-      </div>
-
-
-
-
-
-    </div>
+              {previewSource && (
+                <img
+                  src={previewSource}
+                  alt="choosen"
+                  style={{ height: "100px", width: "100px" }}
+                />
+              )}
+              <div className="my-3">
+                <Form.Group controlId="formFile" className="mb-3 ">
+                  <Form.Label>Default file input example</Form.Label>
+                  <Form.Control
+                    type="file"
+                    name="video"
+                    onChange={handleVideo}
+                  />
+                </Form.Group>
+                <Button variant="primary" type="submit ">
+                  Submit
+                </Button>
+              </div>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
 

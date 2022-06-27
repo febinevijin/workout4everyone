@@ -5,22 +5,23 @@ const trainerWalletSchema = mongoose.Schema({
     //     type: String,
     // required:true
     // },
-    // userId:{
-    //     type: String,
-    // required:true
-    // },
-    // workoutName:{
-    //     type: String,
-    // required:true
-    // },
-    // trainerName:{
-    //     type: String,
-    // required:true
-    // },
-    // trainerId:{
-    //     type: String,
-    // required:true
-    // },
+    userId:{
+        type: String,
+    required:true
+    },
+    workoutName:{
+        type: String,
+        required:true
+    
+    },
+    trainerName:{
+        type: String,
+    required:true
+    },
+    trainerId:{
+        type: String,
+    required:true
+    },
     // price:{
     //     type: Number,
     // required:true
@@ -29,10 +30,10 @@ const trainerWalletSchema = mongoose.Schema({
         type: Number,
     required:true
     },
-    orderId:{
-        type:String,
-        // required:true
-    }
+    // orderId:{
+    //     type:String,
+    //     // required:true
+    // }
     // adminPrice:{
     //     type: Number,
     // required:true

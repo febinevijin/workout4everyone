@@ -3,6 +3,7 @@ import Trainer from "../../models/trainer/trainerModel.js";
 import trainerWorkout from "../../models/trainer/trainerWorkoutModel.js";
 import Order from "../../models/order/orderModel.js";
 import adminWallet from "../../models/admin/adminWallet.js";
+import trainerWallet from "../../models/trainer/trainerWallet.js";
 
 import generateToken from "../../util/gnerateToken.js";
 import cloudinary from "../../util/cloudinary.js";
@@ -48,6 +49,7 @@ const registerTrainer = asyncHandler(async (req, res) => {
 
   // console.log(uploadResponse.secure_url);
   let trainerProfile = profileUpload.secure_url;
+  let trainerProfileId = profileUpload.public_id;
 
   let trainerProof = uploadResponse.secure_url;
 
@@ -56,6 +58,7 @@ const registerTrainer = asyncHandler(async (req, res) => {
     email,
     password,
     trainerProfile,
+    trainerProfileId,
     trainerProof,
   });
 
@@ -119,23 +122,20 @@ const loginTrainer = asyncHandler(async (req, res) => {
 export const postTrainerWorkout = async (req, res, next) => {
   if (req.body.image) {
     console.log("image is present");
+    
   }
-  // console.log(req.body);
-  // console.log(req.files.video);
-  // console.log(req.trainer._id);
+ 
 
   try {
-    const video = await videoUploader(req.files.video, next);
-    console.log(video, "----------");
+//     const video = await Promise.all( videoUploader(req.files.video, next));
+//     console.log(video, "----------");
+// console.log('oipiiuou');
+//     const image = await Promise.all (uploadImageFile(req.body.image, next));
+//     console.log(image, "+++++++++++++++++");
+const video = await videoUploader(req.files.video,res,next)
+const image = await uploadImageFile(req.body.image,next)
 
-    const image = await uploadImageFile(req.body.image, next);
-    console.log(image, "+++++++++++++++++");
-
-    // fs.unlink(`./video/${req.files.video.name}`, (err) => {
-
-    //     if (err) return next(new ErrorHandler("video file uploading fail8888888888", 500))
-    // })
-
+    
     await trainerWorkout.create({
       name: req.body.workout,
       description: req.body.description,
@@ -159,7 +159,7 @@ export const postTrainerWorkout = async (req, res, next) => {
     //   }
     // console.log('ssssss');
   } catch (error) {
-    console.log(error.message, "=========");
+    console.log(error, "=========");
   }
 };
 
@@ -170,12 +170,22 @@ export const postTrainerWorkout = async (req, res, next) => {
 
 export const orderDetails = async (req,res)=>{
   const trainerId = req.trainer._id
-  console.log(trainerId);
+  // console.log(trainerId);
 
     try {
-      const details = await adminWallet.find({trainerId:trainerId})
-      console.log(details);
-      res.status(200).json(details)
+
+      const details = await trainerWallet.find({trainerId:trainerId})
+      if (details) {
+        console.log(details);
+        res.status(200).json(details)
+      }
+      else{
+        res.json({
+          msg:"no wallet amount"
+        })
+      }
+      
+      
     } 
     catch (error) {
       console.log(error);
@@ -186,5 +196,66 @@ export const orderDetails = async (req,res)=>{
 
 // =====================================================================================
 
+
+// ==========================================trainer dashboard============================
+
+ export const   trainerDashboard = async (req,res)=>{
+
+  const trainerId = req.trainer.id
+// console.log(trainerId);
+  try {
+
+    const dashboardDetails = await trainerWallet.aggregate([
+      {$match : {trainerId:trainerId}},
+
+    ])
+    console.log(dashboardDetails);
+    res.json(dashboardDetails)
+  } catch (error) {
+    console.log(error);
+    
+  }
+
+}
+
+// ==========================================================================================
+
+
+// ========================================trainer profile============================
+export const trainerProfile = async (req,res) => {
+
+  const trainerId = req.trainer.id
+
+  try {
+    const trainerDetails = await Trainer.findById(trainerId)
+    console.log(trainerDetails);
+    res.json(trainerDetails)
+    
+  } catch (error) {
+    console.log(error);
+  }
+
+}
+// =======================================================================================
+
+// =================================GET TRAINER VIDEO DETAILS====================================
+export const getVideoDetails = async (req,res)=>{
+
+const trainerId = req.trainer.id
+// console.log(trainerId);
+
+
+
+try {
+  const videoDetails = await trainerWorkout.find({trainerId:trainerId})
+  res.json(videoDetails)
+} catch (error) {
+  console.log(error);
+}
+
+}
+
+
+// ===========================================================================================
 
 export { registerTrainer, loginTrainer };

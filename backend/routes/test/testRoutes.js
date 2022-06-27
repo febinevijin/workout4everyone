@@ -1,9 +1,11 @@
 import express from 'express'
+import multer from 'multer';
 
 const router = express.Router();
-import {sendEmail,videoo} from '../../controllers/test/testController.js'
+import {sendEmail,} from '../../controllers/test/testController.js'
 
-router.route('/video/upload').post(videoo)
+  
+
 router.route('/email').post(sendEmail)
 
 

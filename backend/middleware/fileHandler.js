@@ -20,23 +20,19 @@ export const uploadImageFile = async (image, next) => {
   }
 };
 
-export const videoUploader = async (Video) => {
+export const videoUploader = async (Video,res,next) => {
   try {
     let videoFile = Video;
-    await videoFile.mv(`./video/${Video.name}`, (err) => {
+    await videoFile.mv(`./video/${Video.name}`, err => {
       if (err) {
+        console.log(err);
         return res.status(500).send(err);
-      } else {
-        console.log("success video upload");
-
       }
-
     });
 
 
-    console.log(`./video/${Video.name}`,'ppppppppppppppppppppppppppp99999999999fffffffff');
     const fName = Video.name.split(".")[0];
-    const res = await cloudinary.v2.uploader.upload(
+    const result = await cloudinary.v2.uploader.upload(
       `./video/${Video.name}`,
       {
         resource_type: "video",
@@ -82,7 +78,7 @@ export const videoUploader = async (Video) => {
     // });
 
     console.log("uploaded to cloudinary");
-    return res;
+    return result;
 
   } catch (error) {
     console.log(error);

@@ -33,9 +33,10 @@ import Application from "./screens/admin/application/Application";
 import MyWorkout from "./screens/user/MyWorkout/MyWorkout";
 import VideoPlayer from "./screens/user/video/VideoPlayer";
 import TrainerProfile from "./screens/trainer/trainerProfile/TrainerProfile";
-import AddRealVideo from "./screens/trainer/addRealVideo/AddRealVideo";
+// import AddRealVideo from "./screens/trainer/addRealVideo/AddRealVideo";
 import Wallet from "./screens/admin/wallet/Wallet";
 import TrainerWallet from "./screens/trainer/trainerWallet/TrainerWallet";
+import TrainerProfileEdit from "./screens/trainer/trainerProfileEdit/TrainerProfileEdit";
 
 
 // ==========================================================
@@ -64,9 +65,11 @@ function App() {
         <Route path="/trainerHomepage" element={<TrainerHomePage />} />
         <Route path="/trainerVideo" element={<Video/>} />
         <Route path="/trainerAddVideo" element={<AddVideo/> }/>
-        <Route path="/trainerAddRealVideo" element={<AddRealVideo/> }/>
+        {/* <Route path="/trainerAddRealVideo" element={<AddRealVideo/> }/> */}
         <Route path="/trainerProfile" element={<TrainerProfile/> }/>
         <Route path='/trainerWallet'  element={<TrainerWallet/>}/>
+        <Route path='/trainerProfileEdit'  element={<TrainerProfileEdit/>}/>
+
         
         {/* ===================================================== */}
 
