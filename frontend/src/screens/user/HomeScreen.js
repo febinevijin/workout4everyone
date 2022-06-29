@@ -27,7 +27,7 @@ const [products, setProducts] = useState([])
 // useEffect( () => {
 //   // console.log("helloworld");
 //  const fetchProducts = async() => {
-//    const { data } = await axios.get('http://localhost:5000/api/products')
+//    const { data } = await axios.get('https://backend.workout4everyone.ml/api/products')
 // // console.log(data);
 //    setProducts(data)
 //  }

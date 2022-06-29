@@ -41,7 +41,7 @@ useEffect( ()=>{
         }
       }
 
-      const{data}= await axios.post('http://localhost:5000/api/trainer/loginTrainer',{email,password},
+      const{data}= await axios.post('https://backend.workout4everyone.ml/api/trainer/loginTrainer',{email,password},
      config )
       console.log(data);
      localStorage.setItem('trainerInfo',JSON.stringify(data))

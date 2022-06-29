@@ -11,7 +11,7 @@ const ProductItems = () => {
   const [workout, setWorkout] = useState('')
 
   let getAllWorkout = async ()=>{
-    const {data} =  await axios.get("http://localhost:5000/api/users/getAllWorkout")
+    const {data} =  await axios.get("https://backend.workout4everyone.ml/api/users/getAllWorkout")
     setWorkout(data)
   }
 

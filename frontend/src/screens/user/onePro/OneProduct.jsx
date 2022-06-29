@@ -22,7 +22,7 @@ const OneProduct = () => {
       },
     };
     const { data } = await axios.get(
-      `http://localhost:5000/api/users/getSingleWorkout/${params.id}`, config
+      `https://backend.workout4everyone.ml/api/users/getSingleWorkout/${params.id}`, config
     );
     console.log(data);
     setSinglePro(data);

@@ -21,20 +21,20 @@ const AdminHomeScreen = () => {
 
 
   let getUserCount = async () =>{
-    const {data} =  await axios.get("http://localhost:5000/api/admin/userCount")
+    const {data} =  await axios.get("https://backend.workout4everyone.ml/api/admin/userCount")
     setUser(data)
 
   }
 
   
   let getTrainerCount = async () =>{
-    const {data} =  await axios.get("http://localhost:5000/api/admin/trainerCount")
+    const {data} =  await axios.get("https://backend.workout4everyone.ml/api/admin/trainerCount")
     setTrainer(data)
 
   }
 
   let getVideoCount = async () =>{
-    const {data} =  await axios.get("http://localhost:5000/api/admin/videoCount")
+    const {data} =  await axios.get("https://backend.workout4everyone.ml/api/admin/videoCount")
     setVideo(data)
 
   }

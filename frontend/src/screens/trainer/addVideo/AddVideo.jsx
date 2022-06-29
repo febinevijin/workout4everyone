@@ -85,7 +85,7 @@ const AddVideo = () => {
       //   }
 
       const { data } = await axios.post(
-        "http://localhost:5000/api/trainer/postTrainerWorkout",
+        "https://backend.workout4everyone.ml/api/trainer/postTrainerWorkout",
         { workout, price, week, description, image, video },
         config
       );

@@ -21,7 +21,7 @@ const VideoPlayer = () => {
           };
 
           const { data } = await axios.get(
-            `http://localhost:5000/api/users/videoPlayer/${params.id}`, config
+            `https://backend.workout4everyone.ml/api/users/videoPlayer/${params.id}`, config
           );
           console.log(data);
           

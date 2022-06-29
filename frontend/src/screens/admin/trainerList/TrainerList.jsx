@@ -16,7 +16,7 @@ const TrainerList = () => {
 
 
   const getTrainers = async ()=>{
-    const {data} = await axios.get("http://localhost:5000/api/admin/allTrainer")
+    const {data} = await axios.get("https://backend.workout4everyone.ml/api/admin/allTrainer")
     // console.log(data);
     setTrainers(data)
   }
@@ -25,7 +25,7 @@ const TrainerList = () => {
   const blockUnblock = async (id) =>{
     
     try {
-      await axios.put(`http://localhost:5000/api/admin/blockTrainer/${id}`)
+      await axios.put(`https://backend.workout4everyone.ml/api/admin/blockTrainer/${id}`)
       setRefresh(!refresh)
     } catch (error) {
       console.log(error);

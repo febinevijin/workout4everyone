@@ -14,7 +14,7 @@ const [refresh, setRefresh] = useState(false)
 
 
   const getUsers = async ()=>{
-    const {data} = await axios.get("http://localhost:5000/api/admin/allUser")
+    const {data} = await axios.get("https://backend.workout4everyone.ml/api/admin/allUser")
     // console.log(data);
     setUsers(data)
   }
@@ -23,7 +23,7 @@ const [refresh, setRefresh] = useState(false)
   const blockUnblock = async (id) =>{
     
     try {
-      await axios.put(`http://localhost:5000/api/admin/blockUser/${id}`)
+      await axios.put(`https://backend.workout4everyone.ml/api/admin/blockUser/${id}`)
       setRefresh(!refresh)
     } catch (error) {
       console.log(error);

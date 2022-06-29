@@ -14,7 +14,7 @@ const Cart = () => {
       },
     };
     const response = await axios.get(
-      "http://localhost:5000/api/users/getMyWorkout",
+      "https://backend.workout4everyone.ml/api/users/getMyWorkout",
       config
     );
    let  Workout=response.data

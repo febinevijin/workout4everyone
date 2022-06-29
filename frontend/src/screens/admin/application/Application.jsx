@@ -12,7 +12,7 @@ const Application = () => {
 
   let Applications = async () => {
     const { data } = await axios.get(
-      "http://localhost:5000/api/admin/getApplication"
+      "https://backend.workout4everyone.ml/api/admin/getApplication"
     );
     console.log(data);
     setApplication(data);
@@ -60,7 +60,7 @@ const Approve =async (id)=>{
     console.log(id);
     try {
         console.log('qwerty');
-        await axios.put(`http://localhost:5000/api/admin/approveTrainer/${id}`)
+        await axios.put(`https://backend.workout4everyone.ml/api/admin/approveTrainer/${id}`)
         setRefresh(!refresh)
     } catch (error) {
         console.log(error.message);  
@@ -76,7 +76,7 @@ const Approve =async (id)=>{
 const Deny =async (id)=>{
     console.log(id);
     try {
-        await axios.delete(`http://localhost:5000/api/admin/denyTrainer/${id}`)
+        await axios.delete(`https://backend.workout4everyone.ml/api/admin/denyTrainer/${id}`)
         setRefresh(!refresh)
     } catch (error) {
         console.log(error);  

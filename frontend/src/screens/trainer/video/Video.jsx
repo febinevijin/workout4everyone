@@ -19,7 +19,7 @@ const Video = () => {
     };
 
     const { data } = await axios.get(
-      "http://localhost:5000/api/trainer/getVideoDetails",
+      "https://backend.workout4everyone.ml/api/trainer/getVideoDetails",
       config
     );
     setVideoDetails(data)

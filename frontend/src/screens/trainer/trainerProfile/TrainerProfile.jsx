@@ -22,7 +22,7 @@ const TrainerProfile = () => {
         },
       };
 
-    const {data} = await axios.get("http://localhost:5000/api/trainer/trainerProfile",config)
+    const {data} = await axios.get("https://backend.workout4everyone.ml/api/trainer/trainerProfile",config)
     setTrainerdata(data)
     console.log(data);
    

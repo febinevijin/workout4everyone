@@ -41,7 +41,7 @@ useEffect( ()=>{
         }
       }
 
-      const{data}= await axios.post('http://localhost:5000/api/admin/loginAdmin',{email,password},
+      const{data}= await axios.post('https://backend.workout4everyone.ml/api/admin/loginAdmin',{email,password},
      config )
       console.log(data);
      localStorage.setItem('adminInfo',JSON.stringify(data))

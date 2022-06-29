@@ -35,7 +35,7 @@ const RegisterScreen = () => {
         }
       }
 
-      const {data }= await axios.post('http://localhost:5000/api/users/registerUser',{name,email,password},config)
+      const {data }= await axios.post('https://backend.workout4everyone.ml/api/users/registerUser',{name,email,password},config)
       console.log(data);
      localStorage.setItem('userInfo',JSON.stringify(data))
     //  const userInfo = localStorage.getItem("userInfo")

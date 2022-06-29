@@ -21,7 +21,7 @@ const Wallet = () => {
 
 
     const order = async () =>{
-        const {data} = await axios.get("http://localhost:5000/api/admin/orderDetails")
+        const {data} = await axios.get("https://backend.workout4everyone.ml/api/admin/orderDetails")
         setDetails(data);
         
     }

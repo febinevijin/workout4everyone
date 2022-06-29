@@ -19,7 +19,7 @@ const RightSideProfile = () => {
           };
 
 
-        const {data} = await axios.get("http://localhost:5000/api/users/userProfile", config)
+        const {data} = await axios.get("https://backend.workout4everyone.ml/api/users/userProfile", config)
       console.log(data);
         setValue(data)
 

@@ -13,7 +13,7 @@ const SingleProSideCard = ({singlePro}) => {
   const [status, setStatus] = useState('')
   const [sdkReady, setSdkReady] = useState(false);
   const addPayPalScript = async () => {
-    const { data: PaypalclientId } = await axios.get('http://localhost:5000/api/config/paypal')
+    const { data: PaypalclientId } = await axios.get('https://backend.workout4everyone.ml/api/config/paypal')
     const script = document.createElement('script')
     script.type = 'text/javascript'
     script.src = `https://www.paypal.com/sdk/js?client-id=${PaypalclientId}`
@@ -35,7 +35,7 @@ const checkOutWorkout = async (id)=>{
       },
     };
     const response = await axios.get(
-      `http://localhost:5000/api/users/getCheckOutWorkout/${id}`,
+      `https://backend.workout4everyone.ml/api/users/getCheckOutWorkout/${id}`,
       config
     );
 console.log(response.data.status);
@@ -74,7 +74,7 @@ useEffect(() => {
         "Content-type": "application/json",
       },
     };
-    const {data} = axios.post('http://localhost:5000/api/order/placeOrder',{productId,price,trainerId,workoutName,trainerName},config)
+    const {data} = axios.post('https://backend.workout4everyone.ml/api/order/placeOrder',{productId,price,trainerId,workoutName,trainerName},config)
     // console.log(data);
     alert('program added in MyWorkout')
     navigate('/myWorkout')

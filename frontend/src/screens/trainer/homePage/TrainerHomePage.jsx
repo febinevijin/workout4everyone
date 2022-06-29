@@ -19,7 +19,7 @@ const TrainerHomePage = () => {
         },
       };
 
-    const {data} = await axios.get("http://localhost:5000/api/trainer/trainerDashboard",config)
+    const {data} = await axios.get("https://backend.workout4everyone.ml/api/trainer/trainerDashboard",config)
     setTrainerDeatails(data)
     console.log(data);
 }

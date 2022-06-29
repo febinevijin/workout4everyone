@@ -98,7 +98,7 @@ const TrainerRegisterScreen = () => {
         }
       }
 
-      const {data }= await axios.post('http://localhost:5000/api/trainer/registerTrainer',{name,email,password,profileImage,image},config)
+      const {data }= await axios.post('https://backend.workout4everyone.ml/api/trainer/registerTrainer',{name,email,password,profileImage,image},config)
       console.log(data);
      localStorage.setItem('trainerInfo',JSON.stringify(data))
    

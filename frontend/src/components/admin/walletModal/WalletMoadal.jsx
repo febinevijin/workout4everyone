@@ -15,7 +15,7 @@ const WalletMoadal = ({details}) => {
 
 
   const addPayPalScript = async () => {
-    const { data: PaypalclientId } = await axios.get('http://localhost:5000/api/config/paypal')
+    const { data: PaypalclientId } = await axios.get('https://backend.workout4everyone.ml/api/config/paypal')
     const script = document.createElement('script')
     script.type = 'text/javascript'
     script.src = `https://www.paypal.com/sdk/js?client-id=${PaypalclientId}`
@@ -43,7 +43,7 @@ const submitPaymentHandler = (paymentResult) => {
          "Content-type": "application/json",
        },
      };
-     const response = axios.post('http://localhost:5000/api/order/distributeMoney',{orderId,trainerPrice},config)
+     const response = axios.post('https://backend.workout4everyone.ml/api/order/distributeMoney',{orderId,trainerPrice},config)
     
      alert('payment is done')
     
