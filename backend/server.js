@@ -47,7 +47,7 @@ app.use(fileUpload({
 
 const corsOptions = {
   credentials: true, 
-  origin: "*"
+  origin: "https://workout4everyone.ml/"
 }
 
 app.use(cors(corsOptions))
